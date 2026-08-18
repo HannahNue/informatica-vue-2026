@@ -1,10 +1,10 @@
-# Vue Portfolio Workshop
+# Vue Portfolio Course
 
 Your personal portfolio site — built over 3 days, live from minute one.
 
 **Supported by** [<img src="assets/cornelsen.svg" width="100" height="25" alt="Cornelsen Verlag" style="vertical-align: middle;">](https://www.cornelsen.de/) **— sponsoring instructor time**
 
-> **Note:** This repo will grow to contain all workshop exercises. For now, it
+> **Note:** This repo will grow to contain all course exercises. For now, it
 > only covers what you need to install and set up **before day 1**. Come back
 > here once exercises are added — nothing to do yet beyond this checklist.
 
@@ -12,21 +12,21 @@ Your personal portfolio site — built over 3 days, live from minute one.
 
 ## Before you arrive — setup checklist
 
-Please complete all of these **before the workshop starts**. None of it is
+Please complete all of these **before the course starts**. None of it is
 hard, but doing it in advance means we don't lose the first 20 minutes of
 day 1 to installers and account signups.
 
 ### 1. GitHub account
 
-You'll fork a repo and push to [GitHub Pages](https://pages.github.com/) during the workshop, so you need
+You'll fork a repo and push to [GitHub Pages](https://pages.github.com/) during the course, so you need
 a free account.
 
 - Sign up (if you don't have one already): https://github.com/join
 
 ### 2. Free AI chat account
 
-Create a free account with one AI assistant before the workshop. This is useful for asking questions, debugging code,
-and brainstorming ideas while you work. You will use it during the workshop to support your learning and problem-solving.
+Create a free account with one AI assistant before the course. This is useful for asking questions, debugging code,
+and brainstorming ideas while you work. You will use it during the course to support your learning and problem-solving.
 
 Pick one of these:
 
@@ -57,7 +57,7 @@ generally the most familiar to beginners; Mistral is a great European alternativ
 ### 5. Editor: Visual Studio Code
 
 [Visual Studio Code](https://code.visualstudio.com/) is strongly recommended
-for this workshop. The Vue ecosystem has first-class VS Code support, and the
+for this course. The Vue ecosystem has first-class VS Code support, and the
 extensions below make a real difference.
 
 #### VS Code extensions
@@ -100,7 +100,7 @@ Install [Vue Devtools](https://devtools.vuejs.org/) for Chrome or Firefox. It
 lets you inspect component state, reactive refs, and the router from the
 browser. You'll use it constantly during the exercises.
 
-### 7. Fork and run the workshop repo locally
+### 7. Fork and run the course repo locally
 
 Do this now, not on day 1 — it means any install problems get caught while
 there's time to fix them, instead of eating into the first exercise.
@@ -138,12 +138,12 @@ Before day 1, make sure you can check off all of these:
 - [ ] Vue Devtools installed in your browser
 - [ ] Repo forked, cloned, and `npm run dev` prints `npm works! ✅`
 
-If anything on this list doesn't work, reach out before the workshop rather
+If anything on this list doesn't work, reach out before the course rather
 than troubleshooting it live on day 1 — we'd rather fix it in advance.
 
 ---
 
 ## What's next
 
-Workshop exercises (Day 1, Day 2, Day 3) will be added to this README as the
+Course exercises (Day 1, Day 2, Day 3) will be added to this README as the
 project comes together. Nothing further to do here for now.
