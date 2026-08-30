@@ -356,6 +356,12 @@ Before day 2 wraps up, paste your completed `HomeView.vue` or `ProjectCard.vue` 
 
 ---
 
+## Demos
+
+[Repository: Demos for Vue Course @ Informatica Feminale 2026](https://github.com/plippC/informatica-vue-2026-demos)
+
+---
+
 ## Tech stack
 
 | Tool                                                 | Purpose                        |
