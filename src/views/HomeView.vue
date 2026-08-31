@@ -11,21 +11,19 @@ const bio =
   'Ich studiere Medieninformatik an der Hochschule und stehe gerade kurz vor meinem Auslandssemester in Belgien.'
 
 // TODO Day 1A: b) replace with your own skills
-const skills = [
-  'Adobe Creative Cloud',
-  'Figma',
-  'Canva',
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'Microsoft 365'
-]
+const skills = ref(['Adobe Creative Cloud', 'Figma', 'Canva', 'HTML', 'CSS', 'JavaScript'])
 
 const newSkill = ref('')
 
 function addSkill() {
   // TODO Day 1A: f) push newSkill.value into skills, then clear the input
   console.log('addSkill:', newSkill.value)
+
+  // 1. Wert ins Array einfügen
+  skills.value.push(newSkill.value)
+
+  // 2. Eingabefeld wieder leeren
+  newSkill.value = ''
 }
 
 // ---------------------------------------------------------------------------
@@ -49,7 +47,9 @@ function addSkill() {
 // ---------------------------------------------------------------------------
 
 function removeSkill(index: number) {
-  // TODO Bonus: remove the skill at the given index from the skills array
+  // TODO Bonus: remove the skill at the given index from the skills array,
+  // Positionen die gelöscht werden sollen, in diesem Fall eine
+  skills.value.splice(index, 1)
 }
 </script>
 
@@ -66,7 +66,7 @@ function removeSkill(index: number) {
       <!-- TODO Day 1A: d) Render the skills list using "li" + `v-for`
            Bonus: text-input should also add skill on <ENTER> -->
       <!-- Bonus: <button @click="removeSkill(skills.indexOf(skill))">×</button> -->
-      <li v-for="skill in skills" :key="skill">
+      <li v-for="(skill, index) in skills" :key="skill" @click="removeSkill(index)">
         {{ skill }}
       </li>
     </ul>
@@ -74,8 +74,9 @@ function removeSkill(index: number) {
     <!-- TODO Day 1A: e) wire up v-model and the addSkill button
          Bonus: text-input should also add skill on <ENTER> -->
     <div class="add-skill">
-      <input v-model="newSkill" placeholder="Add a skill…" />
-      <button>Add</button>
+      <input v-model="newSkill" @keyup.enter="addSkill" placeholder="Add a skill…" />
+      <!-- ":disabled" schaltet den Button aus, wenn "newSkill" leer ist-->
+      <button :disabled="!newSkill.trim()" @click="addSkill">Add</button>
     </div>
     <!-- TODO Day 1A: just for debugging: Remove when implementation is ready -->
     <div class="placeholder">{{ newSkill }}</div>
