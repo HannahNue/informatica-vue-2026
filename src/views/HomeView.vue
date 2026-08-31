@@ -72,6 +72,8 @@ watch(
 function removeSkill(index: number) {
   // TODO Bonus: remove the skill at the given index from the skills array,
   // Positionen die gelöscht werden sollen, in diesem Fall eine
+  // Gibt z. B. aus: "removeSkill: Vue (Index 0)"
+  console.log('removeSkill:', skills.value[index], `(Index ${index})`)
   skills.value.splice(index, 1)
 }
 </script>
