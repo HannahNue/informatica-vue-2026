@@ -19,11 +19,13 @@ function addSkill() {
   // TODO Day 1A: f) push newSkill.value into skills, then clear the input
   console.log('addSkill:', newSkill.value)
 
-  // 1. Wert ins Array einfügen
-  skills.value.push(newSkill.value)
+  const trimmedSkill = newSkill.value.trim()
 
-  // 2. Eingabefeld wieder leeren
-  newSkill.value = ''
+  // Nur hinzufügen, wenn der Text nicht leer ist UND noch nicht in der Liste existiert
+  if (trimmedSkill !== '' && !skills.value.includes(trimmedSkill)) {
+    skills.value.push(trimmedSkill)
+    newSkill.value = ''
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -32,15 +34,36 @@ function addSkill() {
 
 // TODO Day 1B: add a computed property `skillCount` that returns the number
 // of skills — hint: skills.value.length
-// const skillCount = computed(() => ...)
+const skillCount = computed(() => skills.value.length)
 
 // TODO Day 1B: use onMounted to load saved skills from localStorage
 // (key: 'portfolio-skills') — hint: JSON.parse() to convert back to an array
-// onMounted(() => { ... })
+onMounted(() => {
+  // Liest den gespeicherten String unter dem Key 'portfolio-skills' aus dem Browser-Speicher
+  const savedSkills = localStorage.getItem('portfolio-skills')
+
+  // Prüft, ob überhaupt Daten im localStorage gefunden wurden
+  if (savedSkills) {
+    // Wandelt den JSON-Text-String wieder in ein JavaScript-Array um und weist es skills.value zu
+    skills.value = JSON.parse(savedSkills)
+  }
+})
 
 // TODO Day 1B: use watch to save skills to localStorage whenever the list changes
 // hint: JSON.stringify() to convert the array to a string, { deep: true } option
-// watch(skills, (val) => { ... }, { deep: true })
+watch(
+  // Zu beobachtende reaktive Variable
+  skills,
+
+  // Wird ausgeführt, sobald sich 'skills' ändert
+  (val) => {
+    // Wandelt das JavaScript-Array 'val' in einen JSON-String um und speichert ihn im localStorage
+    localStorage.setItem('portfolio-skills', JSON.stringify(val))
+  },
+
+  // Überwacht auch Verschachtelungen/Inhaltsänderungen im Array (z. B. push oder splice)
+  { deep: true }
+)
 
 // ---------------------------------------------------------------------------
 // Bonus
@@ -61,7 +84,7 @@ function removeSkill(index: number) {
 
     <!-- TODO Day 1B: replace the hardcoded "Skills" heading with
          "Skills ({{ skillCount }})" once you've added the computed -->
-    <h3>Skills</h3>
+    <h3>Skills ({{ skillCount }})</h3>
     <ul class="skills">
       <!-- TODO Day 1A: d) Render the skills list using "li" + `v-for`
            Bonus: text-input should also add skill on <ENTER> -->
