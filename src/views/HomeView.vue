@@ -66,11 +66,9 @@ function removeSkill(index: number) {
       <!-- TODO Day 1A: d) Render the skills list using "li" + `v-for`
            Bonus: text-input should also add skill on <ENTER> -->
       <!-- Bonus: <button @click="removeSkill(skills.indexOf(skill))">×</button> -->
-
-      <!-- TODO Day 1A: just for showing first output: Remove when implementation of v-for is done -->
-      {{
-        skills
-      }}
+      <li v-for="skill in skills" :key="skill">
+        {{ skill }}
+      </li>
     </ul>
 
     <!-- TODO Day 1A: e) wire up v-model and the addSkill button
