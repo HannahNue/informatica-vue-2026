@@ -4,9 +4,14 @@
 // ---------------------------------------------------------------------------
 
 // TODO Day 2C: import useDarkMode from '@/composables/useDarkMode'
-// const { isDark, toggle } = useDarkMode()
+import { useDarkMode } from '@/composables/useDarkMode'
+import { useRouter, useRoute } from 'vue-router'
+
+const { isDark, toggle } = useDarkMode()
+// Für die Navigation und um die aktuelle Seite zu kennen
+const router = useRouter()
+const route = useRoute()
 //
-// TODO Day 2D: add click-handler to route back
 //
 // Bonus Day 2F: replace the manual useDarkMode() with 'import { useDark, useToggle } from '@vueuse/core'
 </script>
@@ -20,7 +25,9 @@
     </nav>
 
     <!-- TODO Day 2C/F: replace this button with a working dark mode toggle -->
-    <button class="toggle" aria-label="Toggle dark mode">☀ / ☾</button>
+    <button class="toggle" aria-label="Toggle dark mode" @click="toggle">
+      {{ isDark ? '☀' : '☾' }}
+    </button>
   </header>
 
   <main class="container">
@@ -30,10 +37,12 @@
   <footer class="site-footer">
     <div class="footer__spacer"></div>
     <div class="footer__actions">
-      <!-- TODO Day 2D: add click-handler to route back -->
-      <button type="button" class="footer__button">Back</button>
-      <!-- TODO Day 2D: add click-handler to route HOME, if not already at HOME -->
-      <button type="button" class="footer__button">Home</button>
+      <!-- Zurück zur vorherigen Seite -->
+      <button type="button" class="footer__button" @click="router.back()">Back</button>
+      <!-- Zur Startseite, falls man nicht schon dort ist -->
+      <button type="button" class="footer__button" @click="route.path !== '/' && router.push('/')">
+        Home
+      </button>
     </div>
   </footer>
 </template>

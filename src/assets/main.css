@@ -27,7 +27,7 @@
 /* Dark mode — toggled by adding .dark to <html> (Day 2) */
 .dark {
   --color-bg: #111110;
-  --color-bg-secondary: #1c1c1a;
+  --color-bg-secondary: #4d4d49;
   --color-text: #e8e8e4;
   --color-text-secondary: #9a9a94;
   --color-text-muted: #9ca3af;
