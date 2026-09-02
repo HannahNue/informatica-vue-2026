@@ -7,15 +7,20 @@ import ProjectCard from '@/components/ProjectCard.vue'
 
 // TODO Day 2E: import and use your useGithub composable
 // import { useGithub } from '@/composables/useGithub'
-import { useFetch } from '@vueuse/core'
+import { computed } from 'vue' // computed damit es aktualisiert wird
+import { useFetch, useStorage } from '@vueuse/core'
 import type { Repo } from '@/types'
-const githubUsername = 'antfu'
+// const githubUsername = 'antfu'
 // const { repos, loading, error } = useGithub(githubUsername)
-const url = `https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=12`
+// URL als computed() schreiben, damit sie auf Änderungen von username reagiert
+const username = useStorage('github-username', 'antfu')
+const url = computed(
+  () => `https://api.github.com/users/${username.value}/repos?sort=updated&per_page=12`
+)
 
 // HIER nutzen Sie genau die Felder von useFetch und benennen sie passend um:
-const { data: repos, isFetching: loading, error } = useFetch(url).json<Repo[]>()
-
+const { data: repos, isFetching: loading, error } = useFetch(url, { refetch: true }).json<Repo[]>()
+// TODO Day 2G: replace with useStorage composable
 //
 // TODO Day 2F: replace your useGithub composable with @vueuse/core: useFetch composable
 //              see https://vueuse.org/core/useFetch/#usefetch
@@ -47,11 +52,11 @@ const { data: repos, isFetching: loading, error } = useFetch(url).json<Repo[]>()
 <template>
   <section>
     <h2>Projects</h2>
-    <!-- TODO Day 2G
-    <div style="margin-bottom: 1.5rem; display: flex; gap: 0.5rem; max-width: 360px;">
+    <!-- TODO Day 2G -->
+    <p>Geb deinen Usernamen ein:</p>
+    <div style="margin-bottom: 1.5rem; display: flex; gap: 0.5rem; max-width: 360px">
       <input v-model="username" placeholder="GitHub username" />
     </div>
-    -->
 
     <!-- TODO Day 2A: render a single ProjectCard for the 'mockRepo', remove at Day 2E -->
 
