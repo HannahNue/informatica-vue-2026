@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
 import './assets/main.css'
+import NotFoundView from './views/NotFoundView.vue'
 
 // ---------------------------------------------------------------------------
 // Router — routes are pre-configured (Day 2D exercise)
@@ -15,7 +16,8 @@ const router = createRouter({
   routes: [
     { path: '/', component: HomeView },
     { path: '/projects', component: ProjectsView },
-    { path: '/contact', component: ContactView }
+    { path: '/contact', component: ContactView },
+    { path: '/:pathMatch(.*)*', component: NotFoundView }
     //  Day 2D: add 404 catch-all route
   ]
 })

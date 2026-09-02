@@ -4,10 +4,13 @@
 // ---------------------------------------------------------------------------
 
 // TODO Day 2C: import useDarkMode from '@/composables/useDarkMode'
-import { useDarkMode } from '@/composables/useDarkMode'
+// import { useDarkMode } from '@/composables/useDarkMode'
 import { useRouter, useRoute } from 'vue-router'
+import { useDark, useToggle } from '@vueuse/core'
 
-const { isDark, toggle } = useDarkMode()
+const isDark = useDark()
+const toggle = useToggle(isDark)
+// const { isDark, toggle } = useDarkMode()
 // Für die Navigation und um die aktuelle Seite zu kennen
 const router = useRouter()
 const route = useRoute()
@@ -25,7 +28,7 @@ const route = useRoute()
     </nav>
 
     <!-- TODO Day 2C/F: replace this button with a working dark mode toggle -->
-    <button class="toggle" aria-label="Toggle dark mode" @click="toggle">
+    <button class="toggle" aria-label="Toggle dark mode" @click="toggle()">
       {{ isDark ? '☀' : '☾' }}
     </button>
   </header>
@@ -39,8 +42,14 @@ const route = useRoute()
     <div class="footer__actions">
       <!-- Zurück zur vorherigen Seite -->
       <button type="button" class="footer__button" @click="router.back()">Back</button>
-      <!-- Zur Startseite, falls man nicht schon dort ist -->
-      <button type="button" class="footer__button" @click="route.path !== '/' && router.push('/')">
+
+      <!-- Home-Button wird gesperrt, wenn man auf Home '/' ist -->
+      <button
+        type="button"
+        class="footer__button"
+        :disabled="route.path === '/'"
+        @click="router.push('/')"
+      >
         Home
       </button>
     </div>

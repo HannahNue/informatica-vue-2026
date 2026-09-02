@@ -107,6 +107,11 @@ button:not(:disabled):hover {
   background: var(--color-border);
 }
 
+/* Styling für deaktivierte Footer-Buttons */
+.footer__button:disabled {
+  background: var(--color-border);
+}
+
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
